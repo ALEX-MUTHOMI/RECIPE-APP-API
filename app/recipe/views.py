@@ -12,22 +12,26 @@ from recipe import serializers
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for manage recipe APIs."""
 
-    # FIX 1: Correct spelling (serializer_class)
-    serializer_class = serializers.RecipeSerializer
+    serializer_class = serializers.RecipeDetailSerializer
 
-    # FIX 2: Correct spelling (queryset)
     queryset = Recipe.objects.all()
 
-    # FIX 3: Lists with brackets [], not parentheses ()
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """Retrieve recipes for authenticated user."""
-        # FIX 4: self.queryset (not self.query_set)
+
         return self.queryset.filter(user=self.request.user).order_by('-id')
 
     def perform_create(self, serializer):
         """Create a new recipe."""
-        # FIX 5: Clean save logic. Assign the current user to the recipe.
+
         serializer.save(user=self.request.user)
+
+    def get_serializer_class(self):
+        """Return the serializer class for request"""
+        if self.action == "list":
+            return serializers.RecipeSerializer    
+
+        return self.serializer_class
