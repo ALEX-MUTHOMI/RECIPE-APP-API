@@ -60,7 +60,7 @@ class PublicRecipeApiTests(TestCase):
     def test_auth_required(self):
         """
         Test that authentication is required.
-        Ensures the API acts as a 'Bouncer' preventing
+        Ensures the API acts as a 'Bouncer' preventingapp/recipe/tests/test_recipe_api.py
         strangers from seeing our data.
         """
         res = self.client.get(RECIPES_URL)
@@ -241,7 +241,7 @@ class PrivateRecipeApiTests(TestCase):
         res = self.client.delete(url)
 
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
-        
+
         self.assertFalse(Recipe.objects.filter(id=recipe.id).exists())
 
 

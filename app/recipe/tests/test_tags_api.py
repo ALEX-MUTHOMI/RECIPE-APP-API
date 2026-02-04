@@ -15,6 +15,12 @@ from recipe.serializers import TagSerializer
 TAGS_URL = reverse("recipe:tag-list")
 
 
+def tag_detail_url(tag_id):
+    """Create and return a tag detail URL."""
+    # Example: /api/recipe/tags/1/
+    return reverse("recipe:tag-detail", args=[tag_id])
+
+
 def create_user(email="user@example.com", password="testpass123"):
     """Helper function to create and return a new user."""
     return get_user_model().objects.create_user(email=email, password=password)
@@ -29,7 +35,6 @@ class PublicTagsApiTests(TestCase):
     def test_auth_required(self):
         """Test that login is required for retrieving tags."""
         res = self.client.get(TAGS_URL)
-
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
@@ -43,13 +48,11 @@ class PrivateTagsApiTests(TestCase):
 
     def test_retrieve_tags(self):
         """Test retrieving a list of tags."""
-        # Create sample tags
         Tag.objects.create(user=self.user, name="Vegan")
         Tag.objects.create(user=self.user, name="Dessert")
 
         res = self.client.get(TAGS_URL)
-        
-        # Retrieve tags from DB to compare (ordered by name Z-A)
+
         tags = Tag.objects.all().order_by("-name")
         serializer = TagSerializer(tags, many=True)
 
@@ -59,12 +62,29 @@ class PrivateTagsApiTests(TestCase):
     def test_tags_limited_to_user(self):
         """Test that tags returned are for the authenticated user only."""
         user2 = create_user(email="user2@example.com")
-
         Tag.objects.create(user=user2, name="Fruity")
+
         tag = Tag.objects.create(user=self.user, name="Comfort Food")
 
         res = self.client.get(TAGS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(res.data), 1)  # Expect exactly 1 tag
+        self.assertEqual(len(res.data), 1)
         self.assertEqual(res.data[0]["name"], tag.name)
+
+    def test_update_tag(self):
+        """Test partial update (PATCH) of a tag."""
+        tag = Tag.objects.create(user=self.user, name="After Dinner")
+
+        payload = {"name": "Fruit Pie"}
+
+        # FIX: We use tag.id here because 'tag' is the object we just created
+        url = tag_detail_url(tag.id)
+
+        res = self.client.patch(url, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+        # Verify the change happened in the DB
+        tag.refresh_from_db()
+        self.assertEqual(tag.name, payload['name'])
