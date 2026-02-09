@@ -73,7 +73,7 @@ class PrivateTagsApiTests(TestCase):
         self.assertEqual(res.data[0]["name"], tag.name)
 
     def test_update_tag(self):
-        """Test partial update (PATCH) of a tag."""
+        """Test updating a tag."""
         tag = Tag.objects.create(user=self.user, name="After Dinner")
 
         payload = {"name": "Fruit Pie"}
