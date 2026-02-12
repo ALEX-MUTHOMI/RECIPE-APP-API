@@ -1,18 +1,18 @@
 """
 Tests for Models
 """
+from unittest.mock import patch
+
 from decimal import Decimal
 from django.test import TestCase
-from django.contrib.auth import get_user_model
 
+from django.contrib.auth import get_user_model
 from core import models
 
 
 def create_user(email="user@example.com", password="testpass123"):
    """Create and return a new user."""
    return get_user_model().objects.create_user(email, password)
-
-
 
 class ModelsTestCase(TestCase):
     """Tests for User Model"""
@@ -90,7 +90,14 @@ class ModelsTestCase(TestCase):
 
         self.assertEqual(str(ingredient), ingredient.name)
 
+    @patch("core.models.uuid.uuid4")
+    def test_recipe_file_name_uuid(self, mock_uuid):
+        """Test generating Image path"""
+        uuid= "test_uuid"
+        mock_uuid.return_value = uuid
+        file_path =models.recipe_image_file_path(None, "example.jpg")
 
+        self.assertEqual(file_path, f"uploads/recipe/{uuid}.jpg")
 
 
 
