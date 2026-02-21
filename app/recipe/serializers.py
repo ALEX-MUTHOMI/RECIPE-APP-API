@@ -99,7 +99,7 @@ class RecipeSerializer(serializers.ModelSerializer):
 
         # 4. Update remaining fields (title, price, link, etc.)
         for attr, value in validated_data.items():
-            setattr(instance, attr, value)  
+            setattr(instance, attr, value)
 
         instance.save()
         return instance
@@ -110,3 +110,12 @@ class RecipeDetailSerializer(RecipeSerializer):
 
     class Meta(RecipeSerializer.Meta):
         fields = RecipeSerializer.Meta.fields + ["description"]
+
+class RecipeImageSerializer(serializers.ModelSerializer):
+    """Serializer for uploading images to a recipe"""
+
+    class Meta:
+        model = Recipe
+        fields = ["id", "image"]
+        read_only_fields = ["id"]
+        extra_kwargs = {"image": {"required": "image"}}
