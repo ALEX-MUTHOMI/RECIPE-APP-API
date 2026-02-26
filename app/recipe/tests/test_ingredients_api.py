@@ -1,5 +1,5 @@
 """
-Test for the Ingredients API
+Tests for the ingredients API.
 """
 from decimal import Decimal
 
@@ -12,88 +12,88 @@ from rest_framework.test import APIClient
 
 from core.models import (
     Ingredient,
-    Recipe
-    )
+    Recipe,
+)
 
 from recipe.serializers import IngredientSerializer
 
-INGREDIENT_URL = reverse("recipe:ingredient-list")
 
-def ingredient_detail_url(ingredient_id):
-    """Create and return a Ingredient detail URL"""
-    #Example: /api/recipe/tags/1
-    return reverse("recipe:ingredient-detail", args=[ingredient_id])
+INGREDIENTS_URL = reverse('recipe:ingredient-list')
 
-def create_user(email="user@example.com", password="testpass123"):
-    """Helper function to create and return a new user"""
+
+def detail_url(ingredient_id):
+    """Create and return an ingredient detail URL."""
+    return reverse('recipe:ingredient-detail', args=[ingredient_id])
+
+
+def create_user(email='user@example.com', password='testpass123'):
+    """Create and return user."""
     return get_user_model().objects.create_user(email=email, password=password)
 
+
 class PublicIngredientsApiTests(TestCase):
-    """Test the publicly available (unauthenticated) Ingredients API"""
+    """Test unauthenticated API requests."""
+
     def setUp(self):
         self.client = APIClient()
 
     def test_auth_required(self):
-        """Test that Login is required for retreiving Ingredients"""
-        res = self.client.get(INGREDIENT_URL)
+        """Test auth is required for retrieving ingredients."""
+        res = self.client.get(INGREDIENTS_URL)
+
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+
 class PrivateIngredientsApiTests(TestCase):
-    """Test the authorized user for Ingredients API"""
+    """Test authenticated API requests."""
 
     def setUp(self):
         self.user = create_user()
         self.client = APIClient()
         self.client.force_authenticate(self.user)
 
-    def test_retreive_ingredients(self):
-        """Test retreiving a list of Ingredients"""
-        Ingredient.objects.create(user=self.user, name="potpieingredients")
-        Ingredient.objects.create(user=self.user, name ="meat ingredients")
+    def test_retrieve_ingredients(self):
+        """Test retrieving a list of ingredients."""
+        Ingredient.objects.create(user=self.user, name='Kale')
+        Ingredient.objects.create(user=self.user, name='Vanilla')
 
-        res = self.client.get(INGREDIENT_URL)
+        res = self.client.get(INGREDIENTS_URL)
 
-        ingredients = Ingredient.objects.all().order_by("-name")
-        serializer = IngredientSerializer(ingredients, many = True)
-
+        ingredients = Ingredient.objects.all().order_by('-name')
+        serializer = IngredientSerializer(ingredients, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
     def test_ingredients_limited_to_user(self):
-        """Test that ingredients are  for the authenticate user only"""
-        user2 = create_user(email="user2@example.com")
+        """Test list of ingredients is limited to authenticated user."""
+        user2 = create_user(email='user2@example.com')
+        Ingredient.objects.create(user=user2, name='Salt')
+        ingredient = Ingredient.objects.create(user=self.user, name='Pepper')
 
-        Ingredient.objects.create(user=user2, name="Vinegar")
-        ingredient = Ingredient.objects.create(user=self.user, name="Tumeric")
-
-        res = self.client.get(INGREDIENT_URL)
+        res = self.client.get(INGREDIENTS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(res.data),1)
-        self.assertEqual(res.data[0]["name"], ingredient.name)
-        self.assertEqual(res.data[0]["id"], ingredient.id)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(res.data[0]['name'], ingredient.name)
+        self.assertEqual(res.data[0]['id'], ingredient.id)
 
     def test_update_ingredient(self):
-        """Test updating an ingredient"""
-        ingredient = Ingredient.objects.create(user=self.user, name= "cassava")
+        """Test updating an ingredient."""
+        ingredient = Ingredient.objects.create(user=self.user, name='Cilantro')
 
-        payload = {"name": "Beetroot"}
-        url = ingredient_detail_url(ingredient.id)
-
+        payload = {'name': 'Coriander'}
+        url = detail_url(ingredient.id)
         res = self.client.patch(url, payload)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-
-        #VERIFY THE CHANGE HAPPENED IN THE DATABASE
         ingredient.refresh_from_db()
-        self.assertEqual(ingredient.name, payload["name"])
-
+        self.assertEqual(ingredient.name, payload['name'])
 
     def test_delete_ingredient(self):
-        """Test deleting an Ingredient is successful"""
-        ingredient = Ingredient.objects.create(user=self.user, name = "Banana Bread")
+        """Test deleting an ingredient."""
+        ingredient = Ingredient.objects.create(user=self.user, name='Lettuce')
 
-        url = ingredient_detail_url(ingredient.id)
+        url = detail_url(ingredient.id)
         res = self.client.delete(url)
 
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
@@ -101,19 +101,18 @@ class PrivateIngredientsApiTests(TestCase):
         self.assertFalse(ingredients.exists())
 
     def test_filter_ingredients_assigned_to_recipes(self):
-        """Test listing ingredients by those assigned to recipes"""
-        in1 = Ingredient.objects.create(user=self.user, name="Apples")
-        in2 = Ingredient.objects.create(user=self.user, name="Bull")
-
+        """Test listing ingedients to those assigned to recipes."""
+        in1 = Ingredient.objects.create(user=self.user, name='Apples')
+        in2 = Ingredient.objects.create(user=self.user, name='Turkey')
         recipe = Recipe.objects.create(
-            title="Apple Maid",
+            title='Apple Crumble',
             time_minutes=5,
-            price=Decimal("4.50"),
-            user=self.user, #  Added user=self.user here so the database doesn't crash!
+            price=Decimal('4.50'),
+            user=self.user,
         )
         recipe.ingredients.add(in1)
 
-        res = self.client.get(INGREDIENT_URL, {"assigned_only": 1})
+        res = self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
 
         s1 = IngredientSerializer(in1)
         s2 = IngredientSerializer(in2)
@@ -121,10 +120,9 @@ class PrivateIngredientsApiTests(TestCase):
         self.assertNotIn(s2.data, res.data)
 
     def test_filtered_ingredients_unique(self):
-        """Test filtered ingredients returns a unique list"""
-        ing = Ingredient.objects.create(user=self.user, name="Eggs")
-        Ingredient.objects.create(user=self.user, name="Lentils")
-
+        """Test filtered ingredients returns a unique list."""
+        ing = Ingredient.objects.create(user=self.user, name='Eggs')
+        Ingredient.objects.create(user=self.user, name='Lentils')
         recipe1 = Recipe.objects.create(
             title='Eggs Benedict',
             time_minutes=60,
@@ -140,6 +138,6 @@ class PrivateIngredientsApiTests(TestCase):
         recipe1.ingredients.add(ing)
         recipe2.ingredients.add(ing)
 
-        res = self.client.get(INGREDIENT_URL, {'assigned_only': 1})
+        res = self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
 
         self.assertEqual(len(res.data), 1)

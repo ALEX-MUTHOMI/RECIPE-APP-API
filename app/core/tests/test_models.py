@@ -1,31 +1,33 @@
 """
-Tests for Models
+Tests for models.
 """
 from unittest.mock import patch
-
 from decimal import Decimal
-from django.test import TestCase
 
+from django.test import TestCase
 from django.contrib.auth import get_user_model
+
 from core import models
 
 
-def create_user(email="user@example.com", password="testpass123"):
-   """Create and return a new user."""
-   return get_user_model().objects.create_user(email, password)
+def create_user(email='user@example.com', password='testpass123'):
+    """Create a return a new user."""
+    return get_user_model().objects.create_user(email, password)
 
-class ModelsTestCase(TestCase):
-    """Tests for User Model"""
+
+class ModelTests(TestCase):
+    """Test models."""
 
     def test_create_user_with_email_successful(self):
-        """This is a test to create a user with an email successfully"""
-        email = "test@example.com"
-        password = "Testpass123"
+        """Test creating a user with an email is successful."""
+        email = 'test@example.com'
+        password = 'testpass123'
         user = get_user_model().objects.create_user(
-            email = email,
-            password = password
+            email=email,
+            password=password,
         )
-        self.assertEqual(user.email, email )
+
+        self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
@@ -40,8 +42,8 @@ class ModelsTestCase(TestCase):
             user = get_user_model().objects.create_user(email, 'sample123')
             self.assertEqual(user.email, expected)
 
-    def test_create_user_without_email_raises_error(self):
-        """Test creating a user without an email raises a ValueError"""
+    def test_new_user_without_email_raises_error(self):
+        """Test that creating a user without an email raises a ValueError."""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
 
@@ -55,51 +57,44 @@ class ModelsTestCase(TestCase):
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
-
     def test_create_recipe(self):
         """Test creating a recipe is successful."""
         user = get_user_model().objects.create_user(
-            "test@example.com",
-            "testpass123"
+            'test@example.com',
+            'testpass123',
         )
         recipe = models.Recipe.objects.create(
             user=user,
-            title= "sample recipe name",
+            title='Sample recipe name',
             time_minutes=5,
-            price=Decimal(5.00),
-            description= "Sample recipe description."
+            price=Decimal('5.50'),
+            description='Sample receipe description.',
         )
+
         self.assertEqual(str(recipe), recipe.title)
 
     def test_create_tag(self):
         """Test creating a tag is successful."""
         user = create_user()
-        tag = models.Tag.objects.create(
-            user=user,
-            name="Tag 1")
+        tag = models.Tag.objects.create(user=user, name='Tag1')
 
         self.assertEqual(str(tag), tag.name)
 
     def test_create_ingredient(self):
-        """Test Creating an Ingredient"""
+        """Test creating an ingredient is successful."""
         user = create_user()
         ingredient = models.Ingredient.objects.create(
             user=user,
-            name="ingredient 1"
+            name='Ingredient1'
         )
 
         self.assertEqual(str(ingredient), ingredient.name)
 
-    @patch("core.models.uuid.uuid4")
+    @patch('core.models.uuid.uuid4')
     def test_recipe_file_name_uuid(self, mock_uuid):
-        """Test generating Image path"""
-        uuid= "test_uuid"
+        """Test generating image path."""
+        uuid = 'test-uuid'
         mock_uuid.return_value = uuid
-        file_path =models.recipe_image_file_path(None, "example.jpg")
+        file_path = models.recipe_image_file_path(None, 'example.jpg')
 
-        self.assertEqual(file_path, f"uploads/recipe/{uuid}.jpg")
-
-
-
-
-
+        self.assertEqual(file_path, f'uploads/recipe/{uuid}.jpg')
