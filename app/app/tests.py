@@ -3,20 +3,20 @@ Sample tests
 """
 from django.test import SimpleTestCase
 
-from app import calc  # <--- Only this import is needed
+from app import calc
+
 
 class CalcTests(SimpleTestCase):
-    """Test the calc module"""
+    """Test the calc module."""
 
     def test_add_numbers(self):
-        """Test that two numbers are added together"""
+        """Test adding numbers together."""
         res = calc.add(5, 6)
+
         self.assertEqual(res, 11)
 
     def test_subtract_numbers(self):
-        """Test that values are subtracted and returned"""
-        # 1. Fixed spelling (subtract)
-        res = calc.subtract(10, 8)
-        
-        # 2. Fixed assertion (Added 'res')
-        self.assertEqual(res, 2)
+        """Test subtracting numbers."""
+        res = calc.subtract(10, 15)
+
+        self.assertEqual(res, 5)
