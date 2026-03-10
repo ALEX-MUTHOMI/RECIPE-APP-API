@@ -1,7 +1,9 @@
----
 name: Checks
 
 on: [push]
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
   test-lint:
@@ -19,3 +21,7 @@ jobs:
         run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
+    uses: ./.github/workflows/test-and-lint.yml
+    secrets:
+      DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
