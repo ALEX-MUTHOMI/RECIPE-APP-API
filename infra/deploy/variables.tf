@@ -13,3 +13,12 @@ variable "contact" {
   default     = "alex@example.com"
 
 }
+
+variable "db_username" {
+  description = "Username for the recipe app api database"
+  default     = "recipe-app"
+}
+
+variable "db_password" {
+  description = "Password for the Terraform Database"
+}
