@@ -1,3 +1,4 @@
 - feat(terraform): configure AWS VPC network module with public and private subnets [skip ci]
 - feat(terraform): configure NAT Gateway and Route Tables for secure egress [skip ci]
 - chore(terraform): add terraform variables and outputs for VPC network baseline [skip ci]
+- docs(infra): document AWS VPC network isolation and multi-AZ layout [skip ci]
