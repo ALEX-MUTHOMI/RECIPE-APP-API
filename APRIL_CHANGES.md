@@ -4,3 +4,4 @@
 - docs(infra): document AWS VPC network isolation and multi-AZ layout [skip ci]
 - feat(terraform): configure AWS ECR repository with lifecycle policy [skip ci]
 - feat(terraform): configure ECS cluster and Fargate task execution roles [skip ci]
+- test(infra): add terraform validation check for ECS task definition [skip ci]
