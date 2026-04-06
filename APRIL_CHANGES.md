@@ -9,3 +9,4 @@
 - feat(terraform): configure AWS RDS PostgreSQL instance in private subnet [skip ci]
 - feat(terraform): configure RDS security group and subnet groups [skip ci]
 - chore(terraform): configure database credentials in AWS Secrets Manager [skip ci]
+- docs(infra): document database security and encryption at rest [skip ci]
