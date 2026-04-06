@@ -6,3 +6,4 @@
 - feat(terraform): configure ECS cluster and Fargate task execution roles [skip ci]
 - test(infra): add terraform validation check for ECS task definition [skip ci]
 - docs(infra): document container registry and ECS Fargate deployment [skip ci]
+- feat(terraform): configure AWS RDS PostgreSQL instance in private subnet [skip ci]
