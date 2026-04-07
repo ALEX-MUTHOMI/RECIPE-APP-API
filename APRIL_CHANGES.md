@@ -12,3 +12,4 @@
 - docs(infra): document database security and encryption at rest [skip ci]
 - feat(terraform): configure AWS Application Load Balancer with HTTP to HTTPS redirect [skip ci]
 - feat(terraform): configure ALB target groups and health check thresholds [skip ci]
+- test(infra): verify ALB health check target response codes [skip ci]
