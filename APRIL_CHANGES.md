@@ -11,3 +11,4 @@
 - chore(terraform): configure database credentials in AWS Secrets Manager [skip ci]
 - docs(infra): document database security and encryption at rest [skip ci]
 - feat(terraform): configure AWS Application Load Balancer with HTTP to HTTPS redirect [skip ci]
+- feat(terraform): configure ALB target groups and health check thresholds [skip ci]
