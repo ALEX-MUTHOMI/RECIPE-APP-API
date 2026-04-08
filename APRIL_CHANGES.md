@@ -16,3 +16,4 @@
 - docs(infra): document ingress architecture and load balancer routing [skip ci]
 - feat(terraform): configure AWS Route 53 DNS records and hosted zone mapping [skip ci]
 - feat(terraform): configure AWS ACM SSL certificate and DNS validation [skip ci]
+- chore(terraform): add SSL certificate ARN to HTTPS listener rule [skip ci]
