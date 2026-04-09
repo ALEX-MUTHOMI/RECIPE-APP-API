@@ -21,3 +21,4 @@
 - feat(docker): optimize multi-stage Dockerfile for production deployment [skip ci]
 - feat(docker): add non-root user execution in production container runtime [skip ci]
 - test(docker): add container healthcheck directive testing [skip ci]
+- docs(docker): document container build and runtime security practices [skip ci]
