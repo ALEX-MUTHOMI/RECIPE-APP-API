@@ -18,3 +18,4 @@
 - feat(terraform): configure AWS ACM SSL certificate and DNS validation [skip ci]
 - chore(terraform): add SSL certificate ARN to HTTPS listener rule [skip ci]
 - docs(infra): document custom domain and TLS termination architecture [skip ci]
+- feat(docker): optimize multi-stage Dockerfile for production deployment [skip ci]
