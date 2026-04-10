@@ -23,3 +23,4 @@
 - test(docker): add container healthcheck directive testing [skip ci]
 - docs(docker): document container build and runtime security practices [skip ci]
 - feat(api): configure DRF spectacular OpenAPI 3.0 schema generation [skip ci]
+- feat(api): configure Swagger UI and Redoc interactive API documentation [skip ci]
