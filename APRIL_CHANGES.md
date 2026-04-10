@@ -22,3 +22,4 @@
 - feat(docker): add non-root user execution in production container runtime [skip ci]
 - test(docker): add container healthcheck directive testing [skip ci]
 - docs(docker): document container build and runtime security practices [skip ci]
+- feat(api): configure DRF spectacular OpenAPI 3.0 schema generation [skip ci]
