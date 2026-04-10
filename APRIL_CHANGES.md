@@ -25,3 +25,4 @@
 - feat(api): configure DRF spectacular OpenAPI 3.0 schema generation [skip ci]
 - feat(api): configure Swagger UI and Redoc interactive API documentation [skip ci]
 - test(api): verify schema endpoint responds with valid OpenAPI spec [skip ci]
+- docs(api): add API endpoint catalogue and authentication guide [skip ci]
