@@ -28,3 +28,4 @@
 - docs(api): add API endpoint catalogue and authentication guide [skip ci]
 - feat(recipe): add filtering by multiple tags in recipe list endpoint [skip ci]
 - feat(recipe): add filtering by multiple ingredients in recipe list endpoint [skip ci]
+- test(recipe): add unit tests for multi-tag and multi-ingredient filter queries [skip ci]
