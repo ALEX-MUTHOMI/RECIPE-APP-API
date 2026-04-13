@@ -27,3 +27,4 @@
 - test(api): verify schema endpoint responds with valid OpenAPI spec [skip ci]
 - docs(api): add API endpoint catalogue and authentication guide [skip ci]
 - feat(recipe): add filtering by multiple tags in recipe list endpoint [skip ci]
+- feat(recipe): add filtering by multiple ingredients in recipe list endpoint [skip ci]
