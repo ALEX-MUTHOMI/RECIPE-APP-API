@@ -31,3 +31,4 @@
 - test(recipe): add unit tests for multi-tag and multi-ingredient filter queries [skip ci]
 - docs(recipe): document recipe search and filtering parameters [skip ci]
 - feat(user): add token refresh and rotation support in authentication service [skip ci]
+- feat(user): add user profile update and password change endpoints [skip ci]
