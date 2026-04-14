@@ -33,3 +33,4 @@
 - feat(user): add token refresh and rotation support in authentication service [skip ci]
 - feat(user): add user profile update and password change endpoints [skip ci]
 - test(user): add unit tests for user profile mutation and token validation [skip ci]
+- docs(user): document user authentication lifecycle and token rotation [skip ci]
