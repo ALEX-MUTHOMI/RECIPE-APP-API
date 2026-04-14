@@ -32,3 +32,4 @@
 - docs(recipe): document recipe search and filtering parameters [skip ci]
 - feat(user): add token refresh and rotation support in authentication service [skip ci]
 - feat(user): add user profile update and password change endpoints [skip ci]
+- test(user): add unit tests for user profile mutation and token validation [skip ci]
