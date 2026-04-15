@@ -36,3 +36,4 @@
 - docs(user): document user authentication lifecycle and token rotation [skip ci]
 - feat(media): configure AWS S3 bucket and IAM policy for recipe image uploads [skip ci]
 - feat(media): add image upload validation and MIME type checking [skip ci]
+- test(media): add unit tests for invalid image upload rejection [skip ci]
