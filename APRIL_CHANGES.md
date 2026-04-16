@@ -40,3 +40,4 @@
 - docs(media): document S3 media storage and presigned URL access [skip ci]
 - feat(core): add request ID middleware for audit trail correlation [skip ci]
 - feat(core): add security headers middleware (HSTS, CSP, X-Frame-Options) [skip ci]
+- test(core): add unit tests verifying security headers on all responses [skip ci]
