@@ -38,3 +38,4 @@
 - feat(media): add image upload validation and MIME type checking [skip ci]
 - test(media): add unit tests for invalid image upload rejection [skip ci]
 - docs(media): document S3 media storage and presigned URL access [skip ci]
+- feat(core): add request ID middleware for audit trail correlation [skip ci]
