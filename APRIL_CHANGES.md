@@ -41,3 +41,4 @@
 - feat(core): add request ID middleware for audit trail correlation [skip ci]
 - feat(core): add security headers middleware (HSTS, CSP, X-Frame-Options) [skip ci]
 - test(core): add unit tests verifying security headers on all responses [skip ci]
+- docs(core): document API security headers and defense-in-depth posture [skip ci]
