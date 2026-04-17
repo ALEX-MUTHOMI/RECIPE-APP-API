@@ -45,3 +45,4 @@
 - feat(db): add composite database index on recipe title and created_at [skip ci]
 - feat(db): add database index on user email and active status [skip ci]
 - test(db): add index verification tests ensuring high query performance [skip ci]
+- docs(db): document database indexing strategy and query execution plans [skip ci]
