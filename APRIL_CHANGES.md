@@ -48,3 +48,4 @@
 - docs(db): document database indexing strategy and query execution plans [skip ci]
 - feat(core): add structured logging with JSON formatter for AWS CloudWatch [skip ci]
 - feat(core): add slow query logging threshold configuration [skip ci]
+- test(core): add logging format test verifying CloudWatch compatibility [skip ci]
