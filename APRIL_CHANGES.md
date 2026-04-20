@@ -49,3 +49,4 @@
 - feat(core): add structured logging with JSON formatter for AWS CloudWatch [skip ci]
 - feat(core): add slow query logging threshold configuration [skip ci]
 - test(core): add logging format test verifying CloudWatch compatibility [skip ci]
+- docs(observability): document CloudWatch logging and metrics dashboard [skip ci]
