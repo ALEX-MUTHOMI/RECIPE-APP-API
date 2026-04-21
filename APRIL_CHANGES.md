@@ -53,3 +53,4 @@
 - feat(ci): configure GitHub Actions CI workflow for test automation [skip ci]
 - feat(ci): add flake8 and black linting steps in CI pipeline [skip ci]
 - chore(ci): configure code coverage threshold gate in GitHub Actions [skip ci]
+- docs(ci): document automated testing and CI verification pipeline [skip ci]
