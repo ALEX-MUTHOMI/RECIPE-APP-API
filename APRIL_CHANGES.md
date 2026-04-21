@@ -51,3 +51,4 @@
 - test(core): add logging format test verifying CloudWatch compatibility [skip ci]
 - docs(observability): document CloudWatch logging and metrics dashboard [skip ci]
 - feat(ci): configure GitHub Actions CI workflow for test automation [skip ci]
+- feat(ci): add flake8 and black linting steps in CI pipeline [skip ci]
