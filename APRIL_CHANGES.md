@@ -50,3 +50,4 @@
 - feat(core): add slow query logging threshold configuration [skip ci]
 - test(core): add logging format test verifying CloudWatch compatibility [skip ci]
 - docs(observability): document CloudWatch logging and metrics dashboard [skip ci]
+- feat(ci): configure GitHub Actions CI workflow for test automation [skip ci]
