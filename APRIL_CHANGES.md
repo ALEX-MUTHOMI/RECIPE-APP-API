@@ -55,3 +55,4 @@
 - chore(ci): configure code coverage threshold gate in GitHub Actions [skip ci]
 - docs(ci): document automated testing and CI verification pipeline [skip ci]
 - feat(cd): configure AWS ECS deployment workflow in GitHub Actions [skip ci]
+- feat(cd): add ECR image push and task definition update script [skip ci]
