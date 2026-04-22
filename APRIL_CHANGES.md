@@ -57,3 +57,4 @@
 - feat(cd): configure AWS ECS deployment workflow in GitHub Actions [skip ci]
 - feat(cd): add ECR image push and task definition update script [skip ci]
 - test(cd): add dry-run verification for ECS deployment task definition [skip ci]
+- docs(cd): document automated continuous deployment to AWS Fargate [skip ci]
