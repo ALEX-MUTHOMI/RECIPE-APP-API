@@ -59,3 +59,4 @@
 - test(cd): add dry-run verification for ECS deployment task definition [skip ci]
 - docs(cd): document automated continuous deployment to AWS Fargate [skip ci]
 - feat(recipe): add recipe preparation time and serving size attributes [skip ci]
+- feat(recipe): add recipe difficulty level enum and serializer validation [skip ci]
