@@ -61,3 +61,4 @@
 - feat(recipe): add recipe preparation time and serving size attributes [skip ci]
 - feat(recipe): add recipe difficulty level enum and serializer validation [skip ci]
 - test(recipe): add unit tests for recipe metadata attributes and validation [skip ci]
+- docs(recipe): document extended recipe attributes and filtering options [skip ci]
