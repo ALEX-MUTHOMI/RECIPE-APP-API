@@ -63,3 +63,4 @@
 - test(recipe): add unit tests for recipe metadata attributes and validation [skip ci]
 - docs(recipe): document extended recipe attributes and filtering options [skip ci]
 - feat(inventory): add recipe ingredient quantity and measurement unit fields [skip ci]
+- feat(inventory): add ingredient nutritional information serializer [skip ci]
