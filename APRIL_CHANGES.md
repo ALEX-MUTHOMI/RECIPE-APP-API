@@ -64,3 +64,4 @@
 - docs(recipe): document extended recipe attributes and filtering options [skip ci]
 - feat(inventory): add recipe ingredient quantity and measurement unit fields [skip ci]
 - feat(inventory): add ingredient nutritional information serializer [skip ci]
+- test(inventory): add unit tests for ingredient measurement serialization [skip ci]
