@@ -68,3 +68,4 @@
 - docs(inventory): document recipe ingredients schema and unit conversions [skip ci]
 - feat(core): add global exception handling with standardized error format [skip ci]
 - feat(core): add request validation error response detail formatting [skip ci]
+- test(core): add unit tests for error response structure compliance [skip ci]
