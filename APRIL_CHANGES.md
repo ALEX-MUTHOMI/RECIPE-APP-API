@@ -67,3 +67,4 @@
 - test(inventory): add unit tests for ingredient measurement serialization [skip ci]
 - docs(inventory): document recipe ingredients schema and unit conversions [skip ci]
 - feat(core): add global exception handling with standardized error format [skip ci]
+- feat(core): add request validation error response detail formatting [skip ci]
