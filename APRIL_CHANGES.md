@@ -69,3 +69,4 @@
 - feat(core): add global exception handling with standardized error format [skip ci]
 - feat(core): add request validation error response detail formatting [skip ci]
 - test(core): add unit tests for error response structure compliance [skip ci]
+- docs(core): document standard API error response schemas [skip ci]
