@@ -70,3 +70,4 @@
 - feat(core): add request validation error response detail formatting [skip ci]
 - test(core): add unit tests for error response structure compliance [skip ci]
 - docs(core): document standard API error response schemas [skip ci]
+- feat(recipe): add recipe bookmark and favorites endpoint for authenticated users [skip ci]
