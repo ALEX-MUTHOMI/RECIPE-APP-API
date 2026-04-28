@@ -72,3 +72,4 @@
 - docs(core): document standard API error response schemas [skip ci]
 - feat(recipe): add recipe bookmark and favorites endpoint for authenticated users [skip ci]
 - feat(recipe): add user favorites list serializer and pagination [skip ci]
+- test(recipe): add unit tests for recipe bookmarking and favorites querying [skip ci]
