@@ -76,3 +76,4 @@
 - docs(recipe): document favorites API and user collections [skip ci]
 - feat(monitoring): add Prometheus metrics export endpoint for system health [skip ci]
 - feat(monitoring): add database connection pool monitoring gauges [skip ci]
+- test(monitoring): add unit test for metrics endpoint response format [skip ci]
