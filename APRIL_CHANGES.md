@@ -74,3 +74,4 @@
 - feat(recipe): add user favorites list serializer and pagination [skip ci]
 - test(recipe): add unit tests for recipe bookmarking and favorites querying [skip ci]
 - docs(recipe): document favorites API and user collections [skip ci]
+- feat(monitoring): add Prometheus metrics export endpoint for system health [skip ci]
