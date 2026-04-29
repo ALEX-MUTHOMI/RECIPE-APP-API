@@ -77,3 +77,4 @@
 - feat(monitoring): add Prometheus metrics export endpoint for system health [skip ci]
 - feat(monitoring): add database connection pool monitoring gauges [skip ci]
 - test(monitoring): add unit test for metrics endpoint response format [skip ci]
+- docs(monitoring): document Prometheus scraping and Grafana dashboard setup [skip ci]
