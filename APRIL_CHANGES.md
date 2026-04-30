@@ -81,3 +81,4 @@
 - docs(readme): comprehensive README overhaul with AWS architecture and setup guide [skip ci]
 - chore(release): tag v1.0.0 - production AWS deployment milestone [skip ci]
 - chore(sync): synchronize aws-deployment branch with main release [skip ci]
+- docs(changelog): add CHANGELOG.md documenting all features and infrastructure [skip ci]
