@@ -78,3 +78,4 @@
 - feat(monitoring): add database connection pool monitoring gauges [skip ci]
 - test(monitoring): add unit test for metrics endpoint response format [skip ci]
 - docs(monitoring): document Prometheus scraping and Grafana dashboard setup [skip ci]
+- docs(readme): comprehensive README overhaul with AWS architecture and setup guide [skip ci]
