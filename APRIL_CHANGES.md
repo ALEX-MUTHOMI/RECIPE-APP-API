@@ -79,3 +79,4 @@
 - test(monitoring): add unit test for metrics endpoint response format [skip ci]
 - docs(monitoring): document Prometheus scraping and Grafana dashboard setup [skip ci]
 - docs(readme): comprehensive README overhaul with AWS architecture and setup guide [skip ci]
+- chore(release): tag v1.0.0 - production AWS deployment milestone [skip ci]
