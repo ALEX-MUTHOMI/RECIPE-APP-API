@@ -5,4 +5,4 @@
 
 <br /><br >
 
-# Recipe App API BRANCH - DevOps Deployment Automation with Terraform, AWS and Docker
+# Recipe App API - DevOps Deployment Automation with Terraform, AWS and Docker
